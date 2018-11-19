@@ -14,14 +14,14 @@ class UserProfile(AbstractUser):
     gender = models.CharField(max_length=6, choices=(("male", u"男"), ("female", u"女")), default="female",
                               verbose_name="性别")
     mobile = models.CharField(max_length=11, verbose_name="电话")
-    email = models.EmailField(max_length=100, null=True, blank=True, verbose_name="又想")
+    email = models.EmailField(max_length=100, null=True, blank=True, verbose_name="邮箱")
 
     class Meta:
         verbose_name = '用户'
         verbose_name_plural = '用户'
 
     def __str__(self):
-        return self.name
+        return self.username
 
 
 class VerifyCode(models.Model):
@@ -34,7 +34,7 @@ class VerifyCode(models.Model):
     create_time = models.DateTimeField(default=datetime.now, verbose_name="创建时间")
 
     class Meta:
-        verbose_name = '用户'
+        verbose_name = '验证码'
         verbose_name_plural = verbose_name
 
     def __str__(self):
